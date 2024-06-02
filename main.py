@@ -20,7 +20,7 @@ class MyClient(discord.Client):
         print('Logged on as', self.user)
 
     async def on_message(self, message):
-        if (message.guild and message.guild.id in [1236380949663711313, 1246083692376625216]) and (message.author.id == 1150448986264698980):
+        if (message.author.id == 1150448986264698980):
             print(f'Message received user {message.author.name}: {message.content}')
             for component in message.components:
                 for child in component.children:
