@@ -25,7 +25,7 @@ class MyClient(discord.Client):
             for component in message.components:
                 for child in component.children:
                     if child.label == "Enter":
-                        await asyncio.sleep(random.randint(5, 10))
+                    #    await asyncio.sleep(random.randint(5, 10))
                         await child.click()
 
 if __name__ == "__main__":
