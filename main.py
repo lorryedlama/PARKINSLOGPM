@@ -31,7 +31,9 @@ port = os.environ.get('PORT', 8080)  # Default to 5000 if PORT environment varia
 class MyClient(discord.Client):
     async def on_ready(self):
         print('Logged on as', self.user)
+
 client = MyClient()
+
 @client.event
 async def on_message(message):
     if message.author.id == 1150448986264698980:
@@ -45,8 +47,10 @@ async def on_message(message):
         for component in message.components:
             for child in component.children:
                 if child.label == "Enter":
-                    await asyncio.sleep(random.randint(5, 10))
-                    await child.click()
+                    # Add random chance for child.click()
+                    if random.random() < 0.5:  # 50% chance
+                        await asyncio.sleep(random.randint(8, 16))
+                        await child.click()
 
 if __name__ == "__main__":
     client.run(os.environ['TOKEN'])
