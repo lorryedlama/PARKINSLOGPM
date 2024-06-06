@@ -26,7 +26,7 @@ app = Flask(__name__)
 def hello_world():
     return 'Hello, World!'
 
-port = os.environ.get('PORT', 5000)  # Default to 5000 if PORT environment variable is not set
+port = os.environ.get('PORT', 8080)  # Default to 5000 if PORT environment variable is not set
 
 class MyClient(discord.Client):
     async def on_ready(self):
