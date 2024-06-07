@@ -54,7 +54,7 @@ async def on_message(message):
                     if random.random() < 0.75:  # 75% chance of clicking
                         await asyncio.sleep(random.randint(8, 16))
                         await child.click()
-                        if random.random() < 0.4:  # 40% chance of responding
+                        if random.random() < 0.3:  # 40% chance of responding
                             response = random.choice(responses)
                             if random.random() < 0.5:  # 50% chance of using message.reply
                                 await asyncio.sleep(random.randint(7, 20))
