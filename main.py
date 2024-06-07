@@ -52,8 +52,7 @@ async def on_message(message):
             for child in component.children:
                 if child.label == "Enter":
                     # Add random chance for child.click()
-                    if random.random() < 0.75:  # 75% chance of clicking
-                        await asyncio.sleep(random.randint(8, 16))
+                        await asyncio.sleep(random.randint(3, 7))
                         await child.click()
                         if random.random() < 0.4:  # 40% chance of responding
                           if client.user.mentioned_in(message) and "### 🪙\xa0\xa0Airdrop collected!" in embed.description:
