@@ -52,12 +52,12 @@ async def on_message(message):
             for child in component.children:
                 if child.label == "Enter":
                     # Add random chance for child.click()
-                    if random.random() < 0.90:  # 75% chance of clicking
+                    if random.random() < 0.95:  # 75% chance of clicking
                         await asyncio.sleep(random.randint(8, 16))
                         await child.click()
-                        if random.random() < 0.2:  # 40% chance of responding
+                        if random.random() < 0.5:  # 40% chance of responding
                             response = random.choice(responses)
-                            if random.random() < 0.1:  # 50% chance of using message.reply
+                            if random.random() < 0.5:  # 50% chance of using message.reply
                              async with message.channel.typing():
                                 await asyncio.sleep(random.randint(5, 20))
                                 await message.reply(response)
