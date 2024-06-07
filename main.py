@@ -43,8 +43,9 @@ async def on_message(message):
         for embed in message.embeds:
             if client.user.mentioned_in(message) and "### 🎟️\xa0\xa0Raffle ended!" in embed.description:
                 response = random.choice(responses)
-                await asyncio.sleep(random.randint(5, 20))
-                await message.channel.send(response)
+                async with message.channel.typing():
+                         await asyncio.sleep(random.randint(5, 20))
+                         await message.channel.send(response)
 
         # Your existing code for the raffle functionality with components
         for component in message.components:
@@ -54,13 +55,15 @@ async def on_message(message):
                     if random.random() < 0.75:  # 75% chance of clicking
                         await asyncio.sleep(random.randint(8, 16))
                         await child.click()
-                        if random.random() < 0.3:  # 40% chance of responding
+                        if random.random() < 0.4:  # 40% chance of responding
                             response = random.choice(responses)
-                            if random.random() < 0.2:  # 50% chance of using message.reply
-                                await asyncio.sleep(random.randint(7, 20))
+                            if random.random() < 0.1:  # 50% chance of using message.reply
+                             async with message.channel.typing():
+                                await asyncio.sleep(random.randint(5, 20))
                                 await message.reply(response)
                             else:
-                                await asyncio.sleep(random.randint(8, 20))
+                             async with message.channel.typing():
+                                await asyncio.sleep(random.randint(5, 20))
                                 await message.channel.send(response)
 
 if __name__ == "__main__":
