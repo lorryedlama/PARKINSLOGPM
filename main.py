@@ -55,7 +55,7 @@ async def on_message(message):
                         await asyncio.sleep(random.randint(3, 7))
                         await child.click()
                         if random.random() < 0.4:  # 40% chance of responding
-                          if client.user.mentioned_in(message) and "### :coin:\xa0\xa0Airdrop collected!" in embed.description:
+                          if client.user.mentioned_in(message) and "Airdrop collected" in embed.description:
                             response = random.choice(responses)
                             if random.random() < 0.1:  # 50% chance of using message.reply
                              async with message.channel.typing():
