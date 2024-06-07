@@ -57,10 +57,10 @@ async def on_message(message):
                         if random.random() < 0.4:  # 40% chance of responding
                             response = random.choice(responses)
                             if random.random() < 0.5:  # 50% chance of using message.reply
-                                await asyncio.sleep(random.randint(5, 20))
+                                await asyncio.sleep(random.randint(7, 20))
                                 await message.reply(response)
                             else:
-                                await asyncio.sleep(random.randint(5, 20))
+                                await asyncio.sleep(random.randint(8, 20))
                                 await message.channel.send(response)
 
 if __name__ == "__main__":
