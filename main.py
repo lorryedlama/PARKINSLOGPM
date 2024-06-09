@@ -38,7 +38,7 @@ client = MyClient()
 
 @client.event
 async def on_message(message):
-    if message.author.id == 1150448986264698980:
+    if message.author.id == 1150448986264698980 and message.guild.id != 1236380949663711313:
         # Check if the bot is mentioned and the message contains the embed title
         for embed in message.embeds:
             if client.user.mentioned_in(message) and "### 🎟️\xa0\xa0Raffle ended!" in embed.description:
