@@ -55,16 +55,17 @@ async def on_message(message):
                         await asyncio.sleep(random.randint(3, 7))
                         await child.click()
                         if random.random() < 0.4:  # 40% chance of responding
-                          if client.user.mentioned_in(message) and "Airdrop collected" in embed.description:
-                            response = random.choice(responses)
-                            if random.random() < 0.1:  # 50% chance of using message.reply
-                             async with message.channel.typing():
-                                await asyncio.sleep(random.randint(5, 20))
-                                await message.reply(response)
-                            else:
-                             async with message.channel.typing():
-                                await asyncio.sleep(random.randint(5, 20))
-                                await message.channel.send(response)
+                             for embed in message.embeds:
+                                 if client.user.mentioned_in(message) and "Airdrop collected" in embed.description:
+                                     response = random.choice(responses)
+                                     if random.random() < 0.1:  # 50% chance of using message.reply
+                                         async with message.channel.typing():
+                                             await asyncio.sleep(random.randint(5, 20))
+                                             await message.reply(response)
+                                     else:
+                                         async with message.channel.typing():
+                                             await asyncio.sleep(random.randint(5, 20))
+                                             await message.channel.send(response)
 
 if __name__ == "__main__":
     client.run(os.environ['TOKEN'])
