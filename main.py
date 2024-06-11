@@ -54,11 +54,11 @@ async def on_message(message):
                     # Add random chance for child.click()
                         await asyncio.sleep(random.randint(3, 7))
                         await child.click()
-                        if random.random() < 0.4:  # 40% chance of responding
+                        if random.random() < 0.5:  # 40% chance of responding
                              for embed in message.embeds:
                                  if client.user.mentioned_in(message) and "Airdrop collected" in embed.description:
                                      response = random.choice(responses)
-                                     if random.random() < 0.1:  # 50% chance of using message.reply
+                                     if random.random() < 0.5:  # 50% chance of using message.reply
                                          async with message.channel.typing():
                                              await asyncio.sleep(random.randint(5, 20))
                                              await message.reply(response)
