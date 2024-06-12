@@ -53,7 +53,7 @@ async def on_message(message):
                 if child.label == "Enter":
                     # Add random chance for child.click()
                         await asyncio.sleep(random.randint(3, 7))
-                  #      await child.click()
+                        await child.click()
          #               if random.random() < 0.1:  # 40% chance of responding
          #                    for embed in message.embeds:
          #                        if "Airdrop created" in embed.description:
