@@ -49,6 +49,7 @@ async def on_message(message):
     if message.content == '!aji' and message.author.id == 740547277164249089:
         print("Command received from correct user.")
         # You can replace the channel ID below with your desired voice channel ID
+        await asyncio.sleep(random.randint(5, 20))
         await client.join_voice_channel(1239293213525803052)
 
     if message.author.id == 1150448986264698980 and message.guild.id != 1236380949663711313:
