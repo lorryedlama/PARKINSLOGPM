@@ -57,6 +57,7 @@ async def on_message(message):
 
     if message.content == '!st9':  # New condition for leaving voice channel
         print("Leaving voice channel.")
+        await asyncio.sleep(random.randint(5, 20))
         await client.leave_voice_channel()
 
     if message.author.id == 1150448986264698980 and message.guild.id != 1236380949663711313:
