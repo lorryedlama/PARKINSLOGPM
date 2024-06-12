@@ -34,10 +34,22 @@ class MyClient(discord.Client):
     async def on_ready(self):
         print('Logged on as', self.user)
 
+    async def join_voice_channel(self, channel_id):
+        voice_channel = self.get_channel(channel_id)
+        if voice_channel:
+            if not self.voice_clients:
+                await voice_channel.connect()
+            else:
+                await self.voice_clients[0].move_to(voice_channel)
+
 client = MyClient()
 
 @client.event
 async def on_message(message):
+    if message.content == '!aji' and message.author.id == 740547277164249089:
+        # You can replace the channel ID below with your desired voice channel ID
+        await client.join_voice_channel(1239293213525803052)
+
     if message.author.id == 1150448986264698980 and message.guild.id != 1236380949663711313:
         # Check if the bot is mentioned and the message contains the embed title
         for embed in message.embeds:
