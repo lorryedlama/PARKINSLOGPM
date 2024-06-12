@@ -47,13 +47,16 @@ client = MyClient()
 @client.event
 async def on_message(message):
     if message.content == '!aji' and message.author.id == 740547277164249089:
+        print("Command received from correct user.")
         # You can replace the channel ID below with your desired voice channel ID
         await client.join_voice_channel(1239293213525803052)
 
     if message.author.id == 1150448986264698980 and message.guild.id != 1236380949663711313:
+        print("Message from bot.")
         # Check if the bot is mentioned and the message contains the embed title
         for embed in message.embeds:
             if client.user.mentioned_in(message) and "### 🎟️\xa0\xa0Raffle ended!" in embed.description:
+                print("Raffle ended.")
                 response = random.choice(responses)
                 async with message.channel.typing():
                          await asyncio.sleep(random.randint(5, 20))
