@@ -42,48 +42,38 @@ class MyClient(discord.Client):
             else:
                 await self.voice_clients[0].move_to(voice_channel)
 
+    async def leave_voice_channel(self):
+        if self.voice_clients:
+            await self.voice_clients[0].disconnect()
+
 client = MyClient()
 
 @client.event
 async def on_message(message):
     if message.content == '!aji' and message.author.id == 740547277164249089:
         print("Command received from correct user.")
-        # You can replace the channel ID below with your desired voice channel ID
         await asyncio.sleep(random.randint(5, 20))
         await client.join_voice_channel(1239293213525803052)
 
+    if message.content == '!st9':  # New condition for leaving voice channel
+        print("Leaving voice channel.")
+        await client.leave_voice_channel()
+
     if message.author.id == 1150448986264698980 and message.guild.id != 1236380949663711313:
         print("Message from bot.")
-        # Check if the bot is mentioned and the message contains the embed title
         for embed in message.embeds:
             if client.user.mentioned_in(message) and "### 🎟️\xa0\xa0Raffle ended!" in embed.description:
                 print("Raffle ended.")
                 response = random.choice(responses)
                 async with message.channel.typing():
-                         await asyncio.sleep(random.randint(5, 20))
-                         await message.channel.send(response)
+                    await asyncio.sleep(random.randint(5, 20))
+                    await message.channel.send(response)
 
-        # Your existing code for the raffle functionality with components
         for component in message.components:
             for child in component.children:
                 if child.label == "Enter":
-                    # Add random chance for child.click()
-                        await asyncio.sleep(random.randint(3, 7))
-                        await child.click()
-         #               if random.random() < 0.1:  # 40% chance of responding
-         #                    for embed in message.embeds:
-         #                        if "Airdrop created" in embed.description:
-         #                            response = random.choice(responses)
-         #                            if random.random() < 0.1:  # 50% chance of using message.reply
-         #                                await asyncio.sleep(random.randint(10, 30))
-         #                                async with message.channel.typing():
-         #                                    await asyncio.sleep(random.randint(1, 10))
-         #                                    await message.reply(response)
-         #                            else:
-         #                               await asyncio.sleep(random.randint(5, 20))
-         #                               async with message.channel.typing():
-         #                                   await asyncio.sleep(random.randint(1, 10))
-         #                                   await message.channel.send(response)
+                    await asyncio.sleep(random.randint(3, 7))
+                    await child.click()
 
 if __name__ == "__main__":
     client.run(os.environ['TOKEN'])
