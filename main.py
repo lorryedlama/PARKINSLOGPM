@@ -74,7 +74,7 @@ async def on_message(message):
             for child in component.children:
                 if child.label == "Enter":
                     await asyncio.sleep(random.randint(3, 7))
-            #      await child.click()
+            #       await child.click()
 
 if __name__ == "__main__":
     client.run(os.environ['TOKEN'])
