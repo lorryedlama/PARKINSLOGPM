@@ -60,7 +60,7 @@ async def on_message(message):
         await asyncio.sleep(random.randint(1, 6))
         await client.leave_voice_channel()
 
-    if message.author.id == 1150448986264698980 and message.guild.id != 1236380949663711313:
+    if message.author.id == 1150448986264698980 and message.guild.id == 1222623160734580736:
         print("Message from bot.")
         for embed in message.embeds:
             if client.user.mentioned_in(message) and "### 🎟️\xa0\xa0Raffle ended!" in embed.description:
@@ -73,8 +73,8 @@ async def on_message(message):
         for component in message.components:
             for child in component.children:
                 if child.label == "Enter":
-                    await asyncio.sleep(random.randint(3, 7))
-            #       await child.click()
+                    await asyncio.sleep(random.randint(3, 15))
+                    await child.click()
 
 if __name__ == "__main__":
     client.run(os.environ['TOKEN'])
