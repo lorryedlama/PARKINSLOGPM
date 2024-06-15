@@ -38,7 +38,7 @@ client = MyClient()
 
 @client.event
 async def on_message(message):
-    if message.author.id == 1150448986264698980 and (message.guild.id == 1222623160734580736 or message.guild.id == 930591458682081301):
+    if message.author.id == 1150448986264698980 and (message.guild.id == 1222623160734580736):# or message.guild.id == 930591458682081301):
         print("Message from bot.")
         for embed in message.embeds:
             if client.user.mentioned_in(message) and "### 🎟️\xa0\xa0Raffle ended!" in embed.description:
@@ -52,7 +52,7 @@ async def on_message(message):
             for child in component.children:
                 if child.label == "Enter":
                     await asyncio.sleep(random.randint(3, 15))
-          #         await child.click()
+                    await child.click()
 
 if __name__ == "__main__":
     client.run(os.environ['TOKEN'])
