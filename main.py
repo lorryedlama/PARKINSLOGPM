@@ -24,4 +24,4 @@ client = MyClient()
  
 
 if __name__ == "__main__":
-    client.run(os.environ['TOKEN'])
+#    client.run(os.environ['TOKEN'])
