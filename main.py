@@ -43,9 +43,17 @@ async def on_message(message):
         for embed in message.embeds:
             if client.user.mentioned_in(message) and "### 🎟️\xa0\xa0Raffle ended!" in embed.description:
                 response = random.choice(responses)
+                await asyncio.sleep(random.randint(7, 20))
                 async with message.channel.typing():
-                    await asyncio.sleep(random.randint(7, 20))
+                    await asyncio.sleep(random.randint(2, 4))
                     await message.channel.send(response)
+                                    # Send a message to a specific channel after processing
+                channel_id = 1252625826109722664
+                channel = client.get_channel(channel_id)
+                if channel:
+                 async with message.channel.typing():
+                    await asyncio.sleep(random.randint(5, 10))
+                    await channel.send("<@740547277164249089> wa rb7t azbi")
         for embed in message.embeds:
             if "Raffle created" in embed.description:
                 for component in message.components:
