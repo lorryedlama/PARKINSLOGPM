@@ -47,7 +47,12 @@ async def on_message(message):
                 async with message.channel.typing():
                     await asyncio.sleep(random.randint(5, 20))
                     await message.channel.send(response)
-
+            if "### 🎟️\xa0\xa0Raffle created!" in embed.description:
+                for component in message.components:
+                    for child in component.children:
+                        if child.label == "Enter":
+                            await asyncio.sleep(random.randint(3, 15))
+                            await child.click()  # Uncomment this line if you want to simulate clicking the "Enter" button
         for component in message.components:
             for child in component.children:
                 if child.label == "Enter":
