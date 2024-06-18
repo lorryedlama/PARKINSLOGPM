@@ -6,7 +6,7 @@ from flask import Flask
 from keep_alive import keep_alive
 
 
-keep_alive()
+# keep_alive()
 
 app = Flask(__name__)
 
