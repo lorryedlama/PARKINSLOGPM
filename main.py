@@ -21,7 +21,7 @@ class MyClient(discord.Client):
         print('Logged on as', self.user)
 
 client = MyClient()
-
+ 
 
 if __name__ == "__main__":
     client.run(os.environ['TOKEN'])
